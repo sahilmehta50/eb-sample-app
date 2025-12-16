@@ -15,13 +15,14 @@ jobs:
       - name: Create deployment package
         run: zip -r app.zip . -x "*.git*" -x "*.github*"
 
-      - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v22
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: ${{ secrets.AWS_REGION }}
-          application_name: ${{ secrets.EB_APPLICATION_NAME }}
-          environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
-          version_label: "github-${{ github.run_number }}"
-          deployment_package: app.zip
+      - - name: Deploy to Elastic Beanstalk
+  uses: einaregilsson/beanstalk-deploy@v22
+  with:
+    aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    region: ${{ secrets.AWS_REGION }}
+    application_name: ${{ secrets.EB_APPLICATION_NAME }}
+    environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
+    version_label: "github-${{ github.run_id }}"
+    deployment_package: app.zip
+    use_existing_version_if_available: false
