@@ -21,8 +21,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: assignment-eb-app2
-          environment_name: Assignment-eb-app2-env
+          application_name: my-test-2
+          environment_name: My-test-2-env
           region: ap-south-1
           version_label: github-${{ github.run_id }}
           deployment_package: app.zip
