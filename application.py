@@ -2,9 +2,9 @@ from flask import Flask
 
 application = Flask(__name__)
 
-@application.get("/")
+@application.route("/")
 def home():
-    return "Deployed from GitHub Actions ✅ EB Green"
+    return "EB + GitHub Actions = SUCCESS ✅"
 
 if __name__ == "__main__":
     application.run(host="0.0.0.0", port=8080)
