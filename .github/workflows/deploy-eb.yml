@@ -23,6 +23,8 @@ jobs:
           region: ${{ secrets.AWS_REGION }}
           application_name: ${{ secrets.EB_APPLICATION_NAME }}
           environment_name: ${{ secrets.EB_ENVIRONMENT_NAME }}
-          version_label: "github-${{ github.run_id }}"
+
+         
+          s3_bucket: eb-deploy-artifacts-sahil
+          version_label: github-${{ github.run_id }}
           deployment_package: app.zip
-          use_existing_version_if_available: false
